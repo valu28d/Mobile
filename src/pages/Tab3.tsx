@@ -41,8 +41,17 @@ interface Tab3Props {
 }
 
 const Tab3: React.FC<Tab3Props> = ({ user }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const saved = localStorage.getItem('darkMode');
+    if (saved !== null) return saved === 'true';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const [tasks, setTasks] = useState<Task[]>([]);
+
+  useEffect(() => {
+    // Apply initial theme
+    document.body.classList.toggle('dark', darkMode);
+  }, []);
 
   useEffect(() => {
     (async () => {
@@ -55,6 +64,12 @@ const Tab3: React.FC<Tab3Props> = ({ user }) => {
     window.addEventListener('tasks:changed', handler as EventListener);
     return () => window.removeEventListener('tasks:changed', handler as EventListener);
   }, []);
+
+  const toggleDarkMode = (isDark: boolean) => {
+    setDarkMode(isDark);
+    document.body.classList.toggle('dark', isDark);
+    localStorage.setItem('darkMode', isDark.toString());
+  };
 
   // Stats Logic
   const completed = tasks.filter(t => t.completed);
@@ -158,10 +173,7 @@ const SettingIcon = ({ color, icon, slot }: { color: string, icon: any, slot?: s
             <IonLabel style={{ fontWeight: 500 }}>Modo Oscuro</IonLabel>
             <IonToggle 
               checked={darkMode} 
-              onIonChange={e => {
-                setDarkMode(e.detail.checked);
-                document.body.classList.toggle('dark', e.detail.checked);
-              }} 
+              onIonChange={e => toggleDarkMode(e.detail.checked)} 
             />
           </IonItem>
           <IonItem lines="none" detail={false} style={{ '--background': 'transparent' }}>

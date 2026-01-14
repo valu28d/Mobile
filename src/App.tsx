@@ -43,8 +43,8 @@ import '@ionic/react/css/display.css';
  */
 
 /* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
+import '@ionic/react/css/palettes/dark.class.css';
+/* import '@ionic/react/css/palettes/dark.system.css'; */
 
 /* Theme variables */
 import './theme/variables.css';
@@ -58,6 +58,13 @@ const App: React.FC = () => {
 
   useEffect(() => {
     (async () => {
+      // Initialize Theme
+      const savedTheme = localStorage.getItem('darkMode');
+      const isDark = savedTheme !== null 
+        ? savedTheme === 'true' 
+        : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.body.classList.toggle('dark', isDark);
+
       const existingUser = await getUser();
       if (existingUser) {
         setUser(existingUser);
