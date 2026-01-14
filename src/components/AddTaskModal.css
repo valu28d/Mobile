@@ -47,8 +47,8 @@
 }
 
 /* Specific Category Colors when selected - Adjusted for Navy Theme harmony */
-.custom-chip.cat-work.selected { background: #003366; } /* Navy */
-.custom-chip.cat-personal.selected { background: #00509e; } /* Lighter Navy */
+.custom-chip.cat-work.selected { background: #5856d6; } /* Indigo */
+.custom-chip.cat-personal.selected { background: #007aff; } /* Blue */
 .custom-chip.cat-study.selected { background: #2c5282; } /* Steel Blue */
 .custom-chip.cat-shopping.selected { background: #4a6fa5; } /* Muted Blue */
 

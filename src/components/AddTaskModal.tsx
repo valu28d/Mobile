@@ -246,11 +246,11 @@ const AddTaskModal: React.FC<Props> = ({ isOpen, onClose, onSave, editing, prese
             disabled={!title.trim()}
             style={{ 
               '--border-radius': '24px', 
-              '--background': 'linear-gradient(135deg, #003366 0%, #00509e 100%)',
+              '--background': 'linear-gradient(135deg, #007aff 0%, #005ec4 100%)',
               height: '50px',
               fontSize: '18px',
               fontWeight: '700',
-              boxShadow: '0 8px 16px rgba(88, 86, 214, 0.3)'
+              boxShadow: '0 8px 16px rgba(0, 122, 255, 0.3)'
             }}
           >
             {editing ? 'Guardar Cambios' : 'Crear Tarea'}

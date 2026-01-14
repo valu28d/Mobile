@@ -192,14 +192,10 @@ const Tab1: React.FC = () => {
 
         {/* Summary Card */}
         <IonCard className="glass-effect" style={{ 
-          background: 'linear-gradient(135deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 80, 158, 0.85) 100%)', 
+          background: 'linear-gradient(135deg, rgba(52, 199, 89, 0.8) 0%, rgba(48, 176, 199, 0.8) 100%)', // More organic/Apple health colors
           borderRadius: '24px',
-          // We keep the gradient background for the card itself as requested (ESPOL theme), 
-          // but we add a 'glow' border via box-shadow in CSS.
-          // Note: Glass effect works best on 'white/transparent' cards, but for this colored card
-          // we use border and shadow to simulate depth.
           border: '1px solid rgba(255, 255, 255, 0.3)',
-          boxShadow: '0 10px 30px rgba(0, 51, 102, 0.4)'
+          boxShadow: '0 10px 40px rgba(48, 176, 199, 0.3)'
         }}>
           <IonCardHeader>
             <IonCardSubtitle style={{ color: 'rgba(255,255,255,0.8)' }}>Productividad</IonCardSubtitle>
